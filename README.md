@@ -116,3 +116,6 @@ List again the indices and we will see the new indices from MDM in out new elast
 ```
 GET http://localhost:9201/_cat/indices?v=true&s=index
 ```
+
+
+![Snapshot Diagram](./images/snapshot_diagram.png "Snapshot Diagram")
