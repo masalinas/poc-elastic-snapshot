@@ -2,6 +2,10 @@
 
 PoC About create a MDM Elastic 7.4.2 to Elastic 7.16.3 using Snapshots. We will detail all steps to execute this process
 
+This diagram represent the services and volumes used to export/import snapshots between different elastic search versions:
+
+![Snapshot Diagram](./images/snapshot_diagram.png "Snapshot Diagram")
+
 ## STEP01: Start mdm with elastic 7.4.2
 
 Please download the repo: https://github.com/masalinas/poc-mdm-haproxy-oauth2 to start the MDM services and the Elastic 7.4.2 with MDM indices
@@ -116,8 +120,6 @@ List again the indices and we will see the new indices from MDM in out new elast
 ```
 GET http://localhost:9201/_cat/indices?v=true&s=index
 ```
-
-![Snapshot Diagram](./images/snapshot_diagram.png "Snapshot Diagram")
 
 
 ## Links
