@@ -6,7 +6,7 @@ This diagram represent the services and volumes used to export/import snapshots 
 
 ![Snapshot Diagram](./images/snapshot_diagram.png "Snapshot Diagram")
 
-## STEP01: Start MDM with elastic 7.4.2
+## STEP01: Start MDM Stack with elastic 7.4.2 service
 
 Download the repo: https://github.com/masalinas/poc-mdm-haproxy-oauth2 to start the MDM services and the Elastic 7.4.2 with all MDM indices
 to be exported
