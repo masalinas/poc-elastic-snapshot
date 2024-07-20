@@ -117,5 +117,9 @@ List again the indices and we will see the new indices from MDM in out new elast
 GET http://localhost:9201/_cat/indices?v=true&s=index
 ```
 
-
 ![Snapshot Diagram](./images/snapshot_diagram.png "Snapshot Diagram")
+
+
+## Links
+
+- [Snapshot Restore Version Compatibility](https://www.elastic.co/guide/en/elasticsearch/reference/8.14/snapshot-restore.html#snapshot-restore-version-compatibility)
