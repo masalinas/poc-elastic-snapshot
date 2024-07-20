@@ -1,6 +1,6 @@
 # Description
 
-PoC About create a MDM Elastic 7.4.2 to Elastic 7.16.3 using Snapshots. We will detail all steps to execute this process
+PoC About export/import snaphosts between MDM Elastic 7.4.2 to Elastic 7.16.3  We will detail all steps to execute this PoC.
 
 This diagram represent the services and volumes used to export/import snapshots between different elastic search versions:
 
