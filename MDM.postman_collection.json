@@ -1,0 +1,372 @@
+{
+	"info": {
+		"_postman_id": "51ee4867-dd46-4a28-a140-2512df84748f",
+		"name": "MDM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12240969"
+	},
+	"item": [
+		{
+			"name": "Elastic Original Get Indices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9200/_cat/indices?v=true&s=index",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"_cat",
+						"indices"
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": "true"
+						},
+						{
+							"key": "s",
+							"value": "index"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Elastic Original Create Snapshot Repository",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"fs\",\r\n    \"settings\": {\r\n        \"location\": \"mdm_backup\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9201/_snapshot/my-mdm_backup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9201",
+					"path": [
+						"_snapshot",
+						"my-mdm_backup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Elastic Original Snapshot",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"fs\",\r\n    \"settings\": {\r\n        \"location\": \"mdm_backup\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9200/_snapshot/my-mdm_backup/my_snapshot_20240719162000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9200",
+					"path": [
+						"_snapshot",
+						"my-mdm_backup",
+						"my_snapshot_20240719162000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Elastic New Get Indices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9201/_cat/indices?v=true&s=index",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9201",
+					"path": [
+						"_cat",
+						"indices"
+					],
+					"query": [
+						{
+							"key": "v",
+							"value": "true"
+						},
+						{
+							"key": "s",
+							"value": "index"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Elastic New Create Snaphost Repository",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9201/_snapshot/my-mdm_backup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9201",
+					"path": [
+						"_snapshot",
+						"my-mdm_backup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Elastic New Get Repositories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9201/_snapshot",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9201",
+					"path": [
+						"_snapshot"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Elastic New Get Snapshots from Repository",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9201/_snapshot/my-mdm_backup/*?verbose=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9201",
+					"path": [
+						"_snapshot",
+						"my-mdm_backup",
+						"*"
+					],
+					"query": [
+						{
+							"key": "verbose",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Elastic New Restore Snapshot",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9201/_snapshot/my-mdm_backup/my_snapshot_20240719154610/_restore",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9201",
+					"path": [
+						"_snapshot",
+						"my-mdm_backup",
+						"my_snapshot_20240719154610",
+						"_restore"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MDM List Endpoint",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "karaf",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "karaf",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8181/cxs/lists",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"cxs",
+						"lists"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MDM ProxyReverse endpoint",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "karaf",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "karaf",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJRaW1WV1FvR3RZOGNrUlJQUUQ4eUpvS3ZvZG9HMElLZFU3VVBIQ0RhZ0U4In0.eyJleHAiOjE3MjA1MzE0OTMsImlhdCI6MTcyMDUzMTE5MywianRpIjoiOGE4NWU2MDAtN2MxOC00MDJhLTg5MDAtYzU5ODc3YjY0ODc2IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9tb2NrIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImQyNjM3YTIyLTM4MmEtNDFiMS05NDM3LTAyY2QyMGM3NDRlNSIsInR5cCI6IkJlYXJlciIsImF6cCI6Im1vY2siLCJzZXNzaW9uX3N0YXRlIjoiNTA1Y2VjOGMtYmVlOC00YjMzLWJjODQtMzIyZjQ5NWM2N2Q4IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwODgiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiYWRtaW4iLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtbW9jayJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsInNpZCI6IjUwNWNlYzhjLWJlZTgtNGIzMy1iYzg0LTMyMmY0OTVjNjdkOCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6IkFkbWluIEFjdG9yIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWRtaW4iLCJnaXZlbl9uYW1lIjoiQWRtaW4iLCJmYW1pbHlfbmFtZSI6IkFjdG9yIiwiZW1haWwiOiJhZG1pbkBwb2MuaW8ifQ.LAFUvxUgKzWRnxAjO5LckGhcl33KD0zeLMgAZxzDe9pPssSIfPrgq4j14CKCAvrNO9xbV3zzy6Zedr2xRoAQKCLFQB6eC5Ept23B-A2JQUChmXozPHbb6sQuiAdIbZUbHQWAJyp6McAMGMTt_WufDx5W9dIhqxGBJwt9HToIiFpndrqccia5a3rFxETc0aoBBVSskmQ0ZFDdIc28e_H_8pvObqPxVGSWk04fSYkL9DY-_6sYFUDiNxj6Fya7M63pzLL7gJIrOwoeiQBrzbVXRoHwJ1tDTttugyRYpDTU21e2rjfoHiTQ3UgK3_H0-ie66x_zCLbgrlfU_yDS-GLE-w",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:80",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MDM Post EventCollector",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "\"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICIzeTlCQjk1RGowQ29YR0YwNzJvSHpIT1draENjNkpvVlp0REFTSmEwdkxJIn0.eyJleHAiOjE3MjA2OTk4NDMsImlhdCI6MTcyMDY5OTU0MywianRpIjoiYzMzMGYyMWQtYTBmNy00ZWY4LTgyNTYtMDJhMjc2ODdkYzIxIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9tb2NrIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjE4NTg4Yzc3LWM3MGQtNGEwMy1hNGRhLTI3YTljNDNkYTU0NCIsInR5cCI6IkJlYXJlciIsImF6cCI6Im1vY2siLCJzZXNzaW9uX3N0YXRlIjoiMWRjMTU5YmUtNmJjYS00MTZhLTg3NWMtM2U0MjVmYzE5NTg0IiwiYWNyIjoiMSIsImFsbG93ZWQtb3JpZ2lucyI6WyJodHRwOi8vbG9jYWxob3N0OjgwODgiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwiYWRtaW4iLCJ1bWFfYXV0aG9yaXphdGlvbiIsImRlZmF1bHQtcm9sZXMtbW9jayJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoiZW1haWwgcHJvZmlsZSIsInNpZCI6IjFkYzE1OWJlLTZiY2EtNDE2YS04NzVjLTNlNDI1ZmMxOTU4NCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6IkFkbWluIEFjdG9yIiwicHJlZmVycmVkX3VzZXJuYW1lIjoiYWRtaW4iLCJnaXZlbl9uYW1lIjoiQWRtaW4iLCJmYW1pbHlfbmFtZSI6IkFjdG9yIiwiZW1haWwiOiJhZG1pbkBwb2MuaW8ifQ.EXZ_6YhTbzXZ_Cg3WCTFanm1rMDVMo0CGOcghgEg5Hksn35awxhh8_FwSpGZ0kq18GmXWMT5FvIxr08AoWeNDOSbxSpCDKk4BgNPPJRfsXA04CngI7rQvnbBA4PU0A-5nYstv9n43uVC_wChrIMF-G1U3zfZ0Ex4DGS5N6IDOlRXkG0G05j7nC_01bDGN_4xKi_psfP_csxxvy64bpKsXtLEqDWlj2_KWxui91iHTtEp8ODNrIfvT0AMXkx3bl9DTr2o-bVb1tMpTWfmnz0R26ATugXSZc1mjerQD7p5nrY-5hW7Un8WtYVyAnlfvdHxQ0rtR8dv01DPZ09TCYIwSw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"sessionId\":\"12345\",\r\n   \"events\":[\r\n      {\r\n         \"eventType\":\"altaUsuario\",\r\n         \"scope\":\"dev\",\r\n         \"properties\":{\r\n            \"userInfo\":{\r\n               \"personasEnHogar\":\"3\",\r\n               \"codigoSocio\":\"111111\",\r\n               \"ordenUnidadFamiliar\":\"1\",\r\n               \"tiendaCaptacion\":\"42\",\r\n               \"unidadFamiliar\":\"1406280\",\r\n               \"tarjetaPago\":\"N\",\r\n               \"idioma\":\"E\",\r\n              \"tiendaAsignacion\":\"42\",              \r\n               \"infoPersonal\":{\r\n                  \"apellido2\":\"PRUEBA3\",\r\n                  \"fechaNacimiento\":\"26/11/1946\",\r\n                  \"apellido1\":\"PRUEBA3\",\r\n                  \"direccion\":{\r\n                     \"puerta\":\"A\",\r\n                     \"patio\":\"8\",\r\n                     \"domicilio\":\"COMETA II\",\r\n                     \"codigoPostal\":\"3710\",\r\n                     \"tipoVia\":\"PTDA\",\r\n                     \"codigoCalle\":\"304754000\",\r\n                     \"poblacion\":\"CALPE/CALP\",\r\n                     \"provincia\":\"ALICANTE/ALACANT\"\r\n                  },\r\n                  \"documentoPrincipal\":{\r\n                     \"tipoDocumento\":\"NIF\",\r\n                     \"numDocumento\":\"11112256\"\r\n                  },\r\n                  \"telefonoMovil\":\"6795942986\",\r\n                  \"sexo\":\"H\",\r\n                  \"nombre\":\"PRUEBA3\",\r\n                  \"telefonoFijo\":\"96583327195\"\r\n               },\r\n               \"recibirRevista\":\"N\",\r\n               \"numTarjetaFidelizacion\":\"2901406281231\"\r\n            },\r\n            \"fechaModificacion\":\"1610443398277\",\r\n            \"idTransacion\":\"a5bf803c-98a1-41ac-a086-1870b121121312\",\r\n            \"aplicacionModificacion\":\"DEV-PRE\"\r\n         }\r\n      }\r\n   ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8181/eventcollector",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"eventcollector"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MDM Profile Search",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "karaf",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "karaf",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"offset\": 0,\r\n    \"sortby\": null,\r\n    \"forceRefresh\": true,\r\n    \"condition\": {\r\n        \"type\": \"codigoSocio\",\r\n        \"parameterValues\": {\r\n            \"string\": \"111111\"\r\n        }\r\n    },\r\n    \"limit\": 5,\r\n    \"text\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8181/cxs/profiles/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8181",
+					"path": [
+						"cxs",
+						"profiles",
+						"search"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
