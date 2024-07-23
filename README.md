@@ -125,6 +125,29 @@ List again the new indices created. We will see all MDM Elastic indices with the
 GET http://localhost:9201/_cat/indices?v=true&s=index
 ```
 
+## Arrancar nuevo elastic con nuevos indices
+
+To start the new elastic we must:
+
+- Redudce the consume of RAM memory to 2G: "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+- Create a Bind mount to attached the snapshot folder to the default repository snapshot folder of the elastic service: /mnt/c/Temp/snapshot:/usr/share/elasticsearch/backup. **We must to know that the subfolder inside this snapshot folfer must be named as mdm_backup, because it will be the location when we create the repository snapshot in our new elastic service**
+
+```
+docker run -d \
+--name consum-elasticsearch-new \
+-p 9201:9200 \
+-e "discovery.type=single-node" \
+-e "path.repo=/usr/share/elasticsearch/backup" \
+-e "ES_JAVA_OPTS=-Xms2g -Xmx2g" \
+--volume /mnt/c/Temp/snapshot:/usr/share/elasticsearch/backup \
+--net consum \
+elasticsearch:7.16.3
+```
+
+![Snapshot Folder Tree](./images/snapshot-folders.png "Snapshot Folder Tree")
+
+- [Snapshot Restore Version Compatibility](https://www.elastic.co/guide/en/elasticsearch/reference/8.14/snapshot-restore.html#snapshot-restore-version-compatibility)
+
 ## Links
 
 - [Snapshot Restore Version Compatibility](https://www.elastic.co/guide/en/elasticsearch/reference/8.14/snapshot-restore.html#snapshot-restore-version-compatibility)
