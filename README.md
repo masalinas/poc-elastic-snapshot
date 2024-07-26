@@ -117,7 +117,7 @@ We will select one snapshot to be import from the previous list
 POST http://localhost:9201/_snapshot/my-mdm_backup/my_snapshot_20240719154610/_restore
 ```
 
-## STEP11:  List the snapshot repositories
+## STEP11: List new indices imported
 
 List again the new indices created. We will see all MDM Elastic indices with the same data:
 
